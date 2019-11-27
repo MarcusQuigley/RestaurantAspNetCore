@@ -7,6 +7,7 @@ using AspNet_Restaurant.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace AspNet_Restaurant.Pages
 {
@@ -14,19 +15,25 @@ namespace AspNet_Restaurant.Pages
     {
         readonly IConfiguration _configuration;
         readonly IRestaurantData _restaurantData;
-
+        readonly ILogger _logger;
         public ListModel(IConfiguration configuration,
-           IRestaurantData restaurantData)
+           IRestaurantData restaurantData,
+           ILogger<ListModel> logger)
         {
             _configuration = configuration;
             _restaurantData = restaurantData;
-        }
-        public string MyProperty { get; set; }
-        public IEnumerable<Restaurant> Restaurants { get; set; }
+            _logger = logger;
+         }
 
+        [BindProperty(SupportsGet=true)]
+        public string SearchTerm { get; set; }
+
+        public IEnumerable<Restaurant> Restaurants { get; set; }
+        
         public void OnGet()
         {
-            Restaurants = _restaurantData.GetAll();
+            _logger.LogDebug("Executing ListModel");
+            Restaurants = _restaurantData.GetRestaurantByName(SearchTerm);
         }
     }
 }

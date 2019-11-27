@@ -7,6 +7,6 @@ namespace AspNet_Restaurant.Data
 {
     public interface IRestaurantData
     {
-        IEnumerable<Restaurant> GetAll();
+        IEnumerable<Restaurant> GetRestaurantByName(string name);
     }
 }

@@ -18,9 +18,11 @@ namespace AspNet_Restaurant.Data
                 new Restaurant{Id=3,Name="Kaap", Cuisine=CuisineType.Thai, Location="Brooklyn"}
             };
         }
-        public IEnumerable<Restaurant> GetAll()
+        public IEnumerable<Restaurant> GetRestaurantByName(string name = null)
         {
-            return _restaurants.OrderBy(r=>r.Name);
+            return _restaurants
+                    .Where(r => string.IsNullOrEmpty(name) || r.Name.ToLower().StartsWith(name.ToLower()))
+                    .OrderBy(r => r.Name);
         }
     }
 }
