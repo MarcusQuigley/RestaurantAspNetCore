@@ -24,5 +24,11 @@ namespace AspNet_Restaurant.Data
                     .Where(r => string.IsNullOrEmpty(name) || r.Name.ToLower().StartsWith(name.ToLower()))
                     .OrderBy(r => r.Name);
         }
+
+        public Restaurant GetById(int id)
+        {
+            return _restaurants
+                    .SingleOrDefault(r => r.Id == id);
+        }
     }
 }
