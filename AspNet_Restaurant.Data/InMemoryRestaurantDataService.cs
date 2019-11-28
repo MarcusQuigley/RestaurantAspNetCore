@@ -6,10 +6,10 @@ using AspNet_Restaurant.Core;
 
 namespace AspNet_Restaurant.Data
 {
-    public class InMemoryRestaurantData : IRestaurantData
+    public class InMemoryRestaurantDataService : IRestaurantDataService
     {
        readonly List<Restaurant> _restaurants;
-        public InMemoryRestaurantData()
+        public InMemoryRestaurantDataService()
         {
             _restaurants = new List<Restaurant>()
             {
@@ -46,6 +46,13 @@ namespace AspNet_Restaurant.Data
         public int Commit()
         {
             return 0;
+        }
+
+        public Restaurant Add(Restaurant newRestaurant)
+        {
+            _restaurants.Add(newRestaurant);
+            newRestaurant.Id = _restaurants.Max(r => r.Id) + 1;
+            return newRestaurant;
         }
     }
 }
