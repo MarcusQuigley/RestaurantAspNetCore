@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNet_Restaurant.Core", "A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNet_Restaurant.Data", "AspNet_Restaurant.Data\AspNet_Restaurant.Data.csproj", "{CEDE0A83-0E03-4C81-8848-472CDEB4031A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNet_Restaurant", "OdeToFood\AspNet_Restaurant.csproj", "{E4D80C00-4FE4-4F4D-980A-A21EF1EBDEBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNet_Restaurant", "AspNet_Restaurant\AspNet_Restaurant.csproj", "{E4D80C00-4FE4-4F4D-980A-A21EF1EBDEBD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
