@@ -9,5 +9,8 @@ namespace AspNet_Restaurant.Data
     {
         IEnumerable<Restaurant> GetRestaurantByName(string name);
         Restaurant GetById(int id);
+        Restaurant Update(Restaurant updatedRestaurant);
+        int Commit();
+
     }
 }
