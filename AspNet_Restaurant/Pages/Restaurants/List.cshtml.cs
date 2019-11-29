@@ -2,31 +2,36 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AspNet_Restaurant.Core;
-using AspNet_Restaurant.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
+using AspNet_Restaurant.Core;
+using AspNet_Restaurant.Data;
 
-namespace AspNet_Restaurant.Pages
+namespace OdeToFood.Pages.Restaurants
 {
     public class ListModel : PageModel
     {
-        readonly IConfiguration _configuration;
-        readonly IRestaurantData _restaurantData;
+        private readonly IConfiguration config;
+        private readonly IRestaurantDataService restaurantDataService;
 
-        public ListModel(IConfiguration configuration,
-           IRestaurantData restaurantData)
-        {
-            _configuration = configuration;
-            _restaurantData = restaurantData;
-        }
-        public string MyProperty { get; set; }
+        public string Message { get; set; }
         public IEnumerable<Restaurant> Restaurants { get; set; }
+
+        [BindProperty(SupportsGet =true)]
+        public string SearchTerm { get; set; }
+
+        public ListModel(IConfiguration config,
+                         IRestaurantDataService restaurantData)
+        {
+            this.config = config;
+            this.restaurantDataService = restaurantData;
+        }
 
         public void OnGet()
         {
-            Restaurants = _restaurantData.GetAll();
+            Message = config["Message"];
+            Restaurants = restaurantDataService.GetRestaurantByName(SearchTerm);
         }
     }
 }
