@@ -7,10 +7,11 @@ namespace AspNet_Restaurant.Data
 {
     public interface IRestaurantDataService
     {
-        IEnumerable<Restaurant> GetRestaurantByName(string name);
+        IEnumerable<Restaurant> GetRestaurantsByName(string name);
         Restaurant GetById(int id);
         Restaurant Update(Restaurant updatedRestaurant);
         Restaurant Add(Restaurant newRestaurant);
+        Restaurant Delete(int id);
         int Commit();
 
     }

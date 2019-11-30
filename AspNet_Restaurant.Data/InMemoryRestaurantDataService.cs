@@ -18,7 +18,7 @@ namespace AspNet_Restaurant.Data
                 new Restaurant{Id=3,Name="Kaap", Cuisine=CuisineType.Thai, Location="Brooklyn"}
             };
         }
-        public IEnumerable<Restaurant> GetRestaurantByName(string name = null)
+        public IEnumerable<Restaurant> GetRestaurantsByName(string name = null)
         {
             return _restaurants
                     .Where(r => string.IsNullOrEmpty(name) || r.Name.ToLower().StartsWith(name.ToLower()))
@@ -53,6 +53,16 @@ namespace AspNet_Restaurant.Data
             _restaurants.Add(newRestaurant);
             newRestaurant.Id = _restaurants.Max(r => r.Id) + 1;
             return newRestaurant;
+        }
+
+        public Restaurant Delete(int id)
+        {
+            var restaurant = _restaurants.FirstOrDefault(r => r.Id == id);
+            if (restaurant != null)
+            {
+                _restaurants.Remove(restaurant);
+            }
+            return restaurant;
         }
     }
 }
