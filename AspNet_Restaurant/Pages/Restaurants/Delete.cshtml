@@ -4,7 +4,10 @@
     ViewData["Title"] = "Delete";
 }
 
-<h2 class="label-danger">Are you sure you want to delete @Model.Restaurant.Name?</h2>
+<h2>Delete</h2>
+<div class="alert alert-danger">
+    Are you sure you want to delete @Model.Restaurant.Name?
+</div>
 <form method="post">
     <button type="submit"
             class="btn btn-danger">
