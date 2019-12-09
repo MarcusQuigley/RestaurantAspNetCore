@@ -31,6 +31,7 @@ namespace OdeToFood
             
             //services.AddSingleton<IRestaurantDataService, InMemoryRestaurantDataService>();
             services.AddScoped<IRestaurantDataService, SqlRestaurantData>();
+            services.AddMvc().AddRazorRuntimeCompilation();
 
             services.AddRazorPages();
 

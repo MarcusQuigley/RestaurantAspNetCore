@@ -16,6 +16,8 @@ namespace AspNet_Restaurant.Data
             this.db = db;
         }
 
+        public int CountOfRestaurants => db.Restaurants.Count();
+
         public Restaurant Add(Restaurant newRestaurant)
         {
             db.Add(newRestaurant);

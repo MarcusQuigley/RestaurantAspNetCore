@@ -13,6 +13,7 @@ namespace AspNet_Restaurant.Data
         Restaurant Add(Restaurant newRestaurant);
         Restaurant Delete(int id);
         int Commit();
+        int CountOfRestaurants { get; }
 
     }
 }

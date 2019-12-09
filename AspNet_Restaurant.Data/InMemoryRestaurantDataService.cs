@@ -9,6 +9,9 @@ namespace AspNet_Restaurant.Data
     public class InMemoryRestaurantDataService : IRestaurantDataService
     {
        readonly List<Restaurant> _restaurants;
+
+        public int CountOfRestaurants => _restaurants.Count;
+
         public InMemoryRestaurantDataService()
         {
             _restaurants = new List<Restaurant>()
