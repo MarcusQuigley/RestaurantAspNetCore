@@ -34,6 +34,7 @@ namespace OdeToFood
             services.AddMvc().AddRazorRuntimeCompilation();
 
             services.AddRazorPages();
+            services.AddControllers();
 
         }
 
@@ -52,6 +53,7 @@ namespace OdeToFood
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseNodeModules();
             app.UseRouting();
 
             app.UseAuthorization();
@@ -59,6 +61,7 @@ namespace OdeToFood
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapControllers();
             });
  
         }
